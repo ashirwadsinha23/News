@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -26,7 +27,7 @@ import kotlinx.coroutines.launch
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
-    lateinit var viewModel: NewsViewModel
+    private val viewModel: NewsViewModel by activityViewModels()
     lateinit var newsAdapter: NewsAdapter
     lateinit var searchNewsBinding: FragmentSearchNewsBinding
 
@@ -48,9 +49,9 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val newsRepository= NewsRepository()
-        val viewModelProviderFactory= NewsViewModelProviderFactory(newsRepository)
-        viewModel= ViewModelProvider(this,viewModelProviderFactory)[NewsViewModel::class.java]
+//        val newsRepository= NewsRepository()
+//        val viewModelProviderFactory= NewsViewModelProviderFactory(newsRepository)
+//        viewModel= ViewModelProvider(this,viewModelProviderFactory)[NewsViewModel::class.java]
 
 
         setupRecyclerView()

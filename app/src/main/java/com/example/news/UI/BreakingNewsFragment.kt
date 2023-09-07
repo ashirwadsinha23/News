@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -20,7 +21,7 @@ import com.example.news.databinding.FragmentBreakingNewsBinding
 
 
 class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
-    lateinit var viewModel: NewsViewModel
+    private val viewModel: NewsViewModel by activityViewModels()
     private lateinit var newsAdapter: NewsAdapter
     lateinit var breakingNewsBinding: FragmentBreakingNewsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,9 +39,9 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val newsRepository = NewsRepository()
-        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
-        viewModel = ViewModelProvider(this, viewModelProviderFactory)[NewsViewModel::class.java]
+//        val newsRepository = NewsRepository()
+//        val viewModelProviderFactory = NewsViewModelProviderFactory(newsRepository)
+//        viewModel = ViewModelProvider(this, viewModelProviderFactory)[NewsViewModel::class.java]
 
         setupRecyclerView()
 
